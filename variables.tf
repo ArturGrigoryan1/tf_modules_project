@@ -1,17 +1,20 @@
 #######s3 variables#######
 variable "only_s3" {
     type = bool
+    default = false
     description = "this is only s3 bucket"
   
 }
 
 variable "s3_website_hosting" {
     type = bool
+	default = false
     description = "this is s3 bucket static website"  
 }
 
 variable "s3_with_cloudfront" {
     type = bool
+	default = false
     description = "this is s3 bucket with cloudfront"
 }
 
@@ -52,6 +55,7 @@ variable "object_content_encoding" {
 variable "only_cf" {
     description = "cf with your s3 bucket"
     type = bool
+	default = false
 }
 
 variable "cf_root_object" {
@@ -125,6 +129,7 @@ variable "module_bucket_name" {
 
 variable "create_lambda_function" {
     type = bool
+	default = false
     description = "create lambda function"
 }
 
@@ -160,6 +165,7 @@ variable "lf_runtime_lang" {
 #######Security group variables#######
 variable "attach_VPC_and_security_group" {
     type = bool
+	default = false
     description = "value"  
 }
 
@@ -191,6 +197,7 @@ variable "sg_egress_protocol" {
 
 variable "create_VPC" {
     type = bool
+	default = false
     description = "Create VPC"  
 }
 
@@ -230,10 +237,12 @@ variable "vpc_availability_zones" {
 
 variable "create_load_balancer" {
     type = bool  
+	default = false
 }
 
 variable "attach_VPC_and_load_balancer" {
     type = bool
+	default = false
 }
 
 variable "lb_name" {
@@ -296,9 +305,11 @@ variable "lb_tg_hch_unhealthy_threshold" {
 
 variable "create_auto_scaling_group" {
     type = bool
+	default = false
 }
 variable "attach_auto_scaling_group_and_load_balancer" {
     type = bool
+	default = false
 }
 
 
@@ -432,9 +443,11 @@ variable "asg_scale_down_threshold" {
 
 variable "create_EC2" {
     type = bool
+	default = false
 }
 variable "attach_EC2_and_VPC" {
     type = bool  
+	default = false
 }
 
 variable "ec2_count" {
