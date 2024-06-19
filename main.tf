@@ -74,9 +74,9 @@ module "load_balancer" {
     count = var.create_load_balancer ? 1 : 0
     source = "./Modules/Load_balancer"
     lb_name = var.lb_name
-    security_group_id = var.attach_VPC_and_load_balancer ? module.secrurity_group[0].security_group_id : var.lb_security_group_id
-    public_subnet_ids = var.attach_VPC_and_load_balancer ? module.create_VPC[0].public_subnet_ids : var.lb_public_subnet_ids
-    vpc_id = var.attach_VPC_and_load_balancer ? module.create_VPC[0].vpc_id : var.lb_vpc_id
+    security_group_id = var.attach_VPC_and_load_balancer && var.create_VPC ? module.secrurity_group[0].security_group_id : var.lb_security_group_id
+    public_subnet_ids = var.attach_VPC_and_load_balancer && var.create_VPC ? module.create_VPC[0].public_subnet_ids : var.lb_public_subnet_ids
+    vpc_id = var.attach_VPC_and_load_balancer && var.create_VPC ? module.create_VPC[0].vpc_id : var.lb_vpc_id
     tg_name = var.lb_tg_name
     tg_port = var.lb_tg_port
     tg_protocol = var.lb_tg_protocol
@@ -132,6 +132,7 @@ module "create_ec2" {
     source = "./Modules/EC2_module"
     ec2_count = var.ec2_count
     instance_type = var.ec2_instance_type
+    ami = var.ec2_ami
     associate_public_ip_address = var.ec2_associate_public_ip_address
     subnet_id = var.attach_EC2_and_VPC ? module.create_VPC[0].public_subnet_ids[0] : var.ec2_subnet_id
     availability_zone = var.ec2_availability_zone
