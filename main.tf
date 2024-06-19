@@ -136,7 +136,7 @@ module "create_ec2" {
     associate_public_ip_address = var.ec2_associate_public_ip_address
     subnet_id = var.attach_EC2_and_VPC ? module.create_VPC[0].public_subnet_ids[0] : var.ec2_subnet_id
     availability_zone = var.ec2_availability_zone
-    vpc_security_group_ids = var.attach_EC2_and_VPC && var.attach_VPC_and_security_group ? [module.secrurity_group[0].security_group_id] : var.ec2_vpc_security_group_ids
+    vpc_security_group_ids = var.attach_EC2_and_VPC && var.attach_VPC_and_security_group && var.create_VPC ? [module.secrurity_group[0].security_group_id] : var.ec2_vpc_security_group_ids
     user_data_filepath = var.ec2_user_data_filepath
     key_name = var.ec2_key_name
 }
