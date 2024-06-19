@@ -19,11 +19,11 @@ module "s3_b" {
 module "bucket_with_cf" {
     count = local.bucket_with_cf || var.only_cf ? 1 : 0 
     source = "./Modules/Cloudfront_modules"
-    bucket_name = local.bucket_with_cf ? module.s3_b.aws_s3_bucket_name : var.module_bucket_name
-    target_origin_id = local.bucket_with_cf ? module.s3_b.target_origin_id : var.target_origin_id
-    domain_name = local.bucket_with_cf ? module.s3_b.domain_name : var.domain_name
-    bucket_arn = local.bucket_with_cf ? module.s3_b.bucket_arn : var.bucket_arn
-    bucket_id = local.bucket_with_cf ? module.s3_b.bucket_id : var.bucket_id
+    bucket_name = local.bucket_with_cf ? module.s3_b[0].aws_s3_bucket_name : var.module_bucket_name
+    target_origin_id = local.bucket_with_cf ? module.s3_b[0].target_origin_id : var.target_origin_id
+    domain_name = local.bucket_with_cf ? module.s3_b[0].domain_name : var.domain_name
+    bucket_arn = local.bucket_with_cf ? module.s3_b[0].bucket_arn : var.bucket_arn
+    bucket_id = local.bucket_with_cf ? module.s3_b[0].bucket_id : var.bucket_id
     cf_root_object = var.cf_root_object
     cf_allowed_methods = var.cf_allowed_methods
     cf_cached_methods = var.cf_cached_methods
