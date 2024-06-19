@@ -23,7 +23,8 @@ You can connect them together and create
 -EC2 instance
 -attach VPC and EC2
 
-#Usage
+Usage
+
 module "example" {
     source = "git@github.com:ArturGrigoryan1/tf_modules_project.git"
     only_s3 = false
