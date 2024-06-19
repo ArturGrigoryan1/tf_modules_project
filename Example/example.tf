@@ -20,7 +20,7 @@ data "aws_ami" "Latest_Ubuntu_22" {
     }
 }
 
-module "pordz" {
+module "example" {
     source = "git@github.com:ArturGrigoryan1/tf_modules_project.git"
     create_VPC = true
     attach_VPC_and_security_group = true
