@@ -3,6 +3,12 @@ variable "ec2_count" {
     type = number
     default = 2  
 }
+variable "ami" {
+    description = "EC2 ami"
+    type        = string
+    default     = ""
+    
+}
 variable "instance_type" {
   description = "instance_type"
   type        = string
