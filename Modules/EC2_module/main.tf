@@ -1,28 +1,6 @@
-/*terraform {
-  required_providers {
-    aws = {
-      version = ">=5.0.0"
-      source = "hashicorp/aws"
-    }
-  }
-}
-
-provider "aws" {
-  
-}
-*/
-data "aws_ami" "Latest_Ubuntu_22" {
-    owners = ["099720109477"]
-    most_recent = true
-    filter {
-        name = "name"
-        values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
-    }
-}
-
 resource "aws_instance" "my_instance" {
     count = var.ec2_count
-    ami                         = data.aws_ami.Latest_Ubuntu_22.id
+    ami                         = var.ami
     instance_type               = var.instance_type
     associate_public_ip_address = var.associate_public_ip_address
     availability_zone           = var.availability_zone
