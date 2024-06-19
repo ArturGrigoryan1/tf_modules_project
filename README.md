@@ -1,32 +1,43 @@
 # tf_modules_project
-With this project you can create the following modules
--S3 bucket
--Cloudfront
--Lambda function
--VPC 
--Load balancer
--Auto scaling group
--EC2 instance
 
-You can connect them together and create
--Only S3 bucket
--S3 website hosting
--S3 with cloudfront
--Only floudfront
--Lambda function
--VPC
--Attach VPC and security group
--Load balancer
--Attach VPC and load balancer
--Auto scaling group 
--Attach auto scaling group and load balancer
--EC2 instance
--attach VPC and EC2
+This project provides Terraform modules to create various AWS resources and configure them together seamlessly.
 
-Usage
+## Supported Modules
 
+- S3 bucket
+- CloudFront distribution
+- Lambda function
+- VPC (Virtual Private Cloud)
+- Load balancer
+- Auto scaling group
+- EC2 instance
+
+## Module Combinations
+
+You can connect these modules to create the following setups:
+
+- Only S3 bucket
+- S3 website hosting
+- S3 with CloudFront
+- Only CloudFront
+- Lambda function
+- VPC
+- Attach VPC and security group
+- Load balancer
+- Attach VPC and load balancer
+- Auto scaling group
+- Attach auto scaling group and load balancer
+- EC2 instance
+- Attach EC2 to VPC
+
+## Usage
+
+To use these modules in your Terraform configuration, add the following snippet to your `.tf` files:
+
+```hcl
 module "example" {
     source = "git@github.com:ArturGrigoryan1/tf_modules_project.git"
+
     only_s3 = false
     s3_website_hosting = false
     s3_with_cloudfront = false
@@ -41,6 +52,5 @@ module "example" {
     create_EC2 = true
     attach_EC2_and_VPC = true
 }
-
 
 
